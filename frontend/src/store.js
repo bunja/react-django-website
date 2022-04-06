@@ -13,6 +13,8 @@ const reducer = combineReducers({
 const cartItemesFromStorage = localStorage.getItem('cartItems') ?
     JSON.parse(localStorage.getItem('cartItems')) : []
 
+console.log("is there anything in local storage", cartItemesFromStorage)
+
 
 const initialState = {
     cart: {cartItems: cartItemesFromStorage}
