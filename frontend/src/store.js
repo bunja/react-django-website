@@ -16,7 +16,7 @@ const cartItemesFromStorage = localStorage.getItem('cartItems') ?
     JSON.parse(localStorage.getItem('cartItems')) : []
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ?
-    JSON.parse(localStorage.getItem('userInfo')) : []
+    JSON.parse(localStorage.getItem('userInfo')) : null
 
 console.log("is there anything in local storage", cartItemesFromStorage)
 
@@ -25,6 +25,7 @@ const initialState = {
     cart: {cartItems: cartItemesFromStorage},
     userLogin: {userInfo: userInfoFromStorage}
 }
+console.log("INITIAL STATE", initialState)
 
 const middleware = [thunk]
 const store = createStore(reducer, initialState,
