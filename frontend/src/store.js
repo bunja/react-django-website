@@ -23,7 +23,7 @@ console.log("is there anything in local storage", cartItemesFromStorage)
 
 const initialState = {
     cart: {cartItems: cartItemesFromStorage},
-    userLogin: {userInfo: userInfoFromStorage}
+    userLogin: {userInfo: userInfoFromStorage},
 }
 console.log("INITIAL STATE", initialState)
 

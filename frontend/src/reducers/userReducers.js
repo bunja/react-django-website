@@ -6,7 +6,7 @@ import {
 
 } from '../constants/userConstants'
 
-export const userLoginReducer = (state = { }, action) => {
+export const userLoginReducer = (state = {}, action) => {
     switch (action.type) {
         case USER_LOGIN_REQUEST:
             return { loading: true }
@@ -21,6 +21,7 @@ export const userLoginReducer = (state = { }, action) => {
             return { loading: false, error: action.payload }
 
         case USER_LOGOUT:
+            console.log('badums')
             return {}
 
         default:

@@ -5,7 +5,7 @@ import { Form, Button, Row, Col } from 'react-bootstrap'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { login } from '../actions/userActions'
-import second from '../components/FormContainer'
+
 import FormContainer from '../components/FormContainer'
 
 function LoginScreen() {
@@ -23,18 +23,19 @@ function LoginScreen() {
 
     const userLogin = useSelector(state => state.userLogin)
     const { error, loading, userInfo } = userLogin
-    console.log('uer info', userInfo)
+    console.log('user info', userInfo)
 
     useEffect(() => {
         if (userInfo) {
             navigate(redirect)
-            console.log("what's the fuck ", userInfo)
+            console.log("User Info in useEffect ", userInfo)
             
         }
     }, [ navigate, userInfo, redirect])
 
     const submitHandler = (e) => {
         e.preventDefault()
+        console.log('submit handler is working')
         dispatch(login(email, password))
     }
    
