@@ -19,7 +19,7 @@ function LoginScreen() {
  
 
     const redirect = location.search ? location.search.split('=')[1] : '/'
-    console.log('location.search ', location )
+    console.log('redirect >>>>>>> ', redirect )
 
     const userLogin = useSelector(state => state.userLogin)
     const { error, loading, userInfo } = userLogin
@@ -77,7 +77,7 @@ function LoginScreen() {
             <Form className='py-3'>
                 <Col>
                     New user? 
-                    <Link to={redirect ? `/registr?redirect=${redirect}` : '/register'}> Register</Link>
+                    <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}> Register</Link>
                 </Col>
             </Form>
         </FormContainer>
