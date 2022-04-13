@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
-import Loader from '../components/Loader'
-import Message from '../components/Message'
 import { saveShippingAddress } from '../actions/cartActions'
 
 import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
 
 function ShippingScreen() {
-    const location = useLocation()
+    
     const navigate = useNavigate()
 
     const cart = useSelector(state=> state.cart)
