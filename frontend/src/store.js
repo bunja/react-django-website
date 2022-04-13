@@ -21,11 +21,17 @@ const cartItemesFromStorage = localStorage.getItem('cartItems') ?
 const userInfoFromStorage = localStorage.getItem('userInfo') ?
     JSON.parse(localStorage.getItem('userInfo')) : null
 
+const shippingAddressFromStorage = localStorage.getItem('shippingAddress') ?
+    JSON.parse(localStorage.getItem('shippingAddress')) : {}
+
 console.log("is there anything in local storage", cartItemesFromStorage)
 
 
 const initialState = {
-    cart: {cartItems: cartItemesFromStorage},
+    cart: {
+        cartItems: cartItemesFromStorage,
+        shippingAddress: shippingAddressFromStorage,
+    },
     userLogin: {userInfo: userInfoFromStorage},
 }
 console.log("INITIAL STATE", initialState)
