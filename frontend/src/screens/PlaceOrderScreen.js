@@ -4,6 +4,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { saveShippingAddress } from '../actions/cartActions'
 import { createOrder } from '../actions/orderActions'
+import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 
 
 import CheckoutSteps from '../components/CheckoutSteps'
@@ -31,6 +32,7 @@ function PlaceOrderScreen() {
     useEffect(() => {
         if (success) {
             navigate('/order/${order._id}')
+            dispatch({ type: ORDER_CREATE_RESET})
         }
     
     }, [success, navigate])

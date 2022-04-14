@@ -38,8 +38,7 @@ export const listProductDetails = (id) => async (dispatch) => {
             payload: data
         })
 
-        localStorage.setItem('userInfo', JSON.stringify(data))
-        
+                
     } catch (error) {
         dispatch({
             type: PRODUCT_DETAILS_FAIL,
