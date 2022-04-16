@@ -13,11 +13,13 @@ import {
 export const orderCreateReducer = (state = {}, action) => {
     switch (action.type) {
         case ORDER_CREATE_REQUEST:
+            // console.log("LOLOLO! ORDER_CREATE_REQUEST");
             return {
                 loading: true
             }
 
         case ORDER_CREATE_SUCCESS:
+            // console.log("LOLOLO! ORDER_CREATE_SUCCESS", action.payload);
             return {
                 loading: false,
                 success: true,
@@ -31,7 +33,7 @@ export const orderCreateReducer = (state = {}, action) => {
             }
 
         case ORDER_CREATE_RESET:
-            console.log("LOLOLO! ORDER_CREATE_RESET");
+            // console.log("LOLOLO! ORDER_CREATE_RESET");
             return {}
 
         default:
@@ -48,7 +50,7 @@ export const orderDetailsReducer = (
     },
     action) => {
     
-    console.log('order details reducer')
+    
     switch (action.type) {
         case ORDER_DETAILS_REQUEST:
             return {
@@ -57,6 +59,7 @@ export const orderDetailsReducer = (
             }
 
         case ORDER_DETAILS_SUCCESS:
+            console.log('reducer ORDER_DETAILS_SUCCESS+++>', action.payload)
             return {
                 loading: false,
                 order: action.payload

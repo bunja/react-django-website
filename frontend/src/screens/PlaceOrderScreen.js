@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 
-import { createOrder } from '../actions/orderActions'
+import { createOrder, getOrderDetails } from '../actions/orderActions'
 import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 
 
@@ -17,7 +17,7 @@ function PlaceOrderScreen() {
     const { order, error, success } = orderCreate
     const cart = useSelector(state => state.cart)
     const { shippingAddress } = cart
-    console.log('orderCreate Place Order Screen', orderCreate)
+    // console.log('orderCreate PlaceOrderScreen', orderCreate)
 
     cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2)
     cart.shippingPrice = (cart.itemsPrice > 100 ? 0 : 10).toFixed(2)
@@ -33,11 +33,13 @@ function PlaceOrderScreen() {
         if (success) {
             navigate(`/order/${order._id}`)
             // dispatch({ type: ORDER_CREATE_RESET})
+            // dispatch(getOrderDetails(order._id))
         }
     
     }, [success, navigate])
 
 const placeOrder = () => {
+    console.log('placeOrder handler triggered')
     dispatch(createOrder({
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,

@@ -59,8 +59,9 @@ def addOrderItems(request):
 @permission_classes([IsAuthenticated])   
 def getOrderById(request, pk):
     user = request.user
-    order = Order.objects.get(_id=pk)
+    
     try:
+        order = Order.objects.get(_id=pk)
         if user.is_staff or order.user == user:
             serializer = OrderSerializer(order, many=False)
             return Response(serializer.data)

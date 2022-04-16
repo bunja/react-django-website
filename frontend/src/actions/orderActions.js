@@ -34,6 +34,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
             order,
             config
         )
+        console.log("recieving data", data)
 
         dispatch({
             type: ORDER_CREATE_SUCCESS,
@@ -58,6 +59,8 @@ export const createOrder = (order) => async (dispatch, getState) => {
 
 export const getOrderDetails = (id) => async (dispatch, getState) => {
     try {
+        console.log('getOrderDetails', 62, id)
+
         dispatch({
             type: ORDER_DETAILS_REQUEST
         })
@@ -65,6 +68,8 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
         const { 
             userLogin: {userInfo}, 
         } = getState()
+
+        console.log('getOrderDetails userInfo', 72, userInfo)
 
         const config = {
             headers: {
@@ -78,10 +83,13 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
             config
         )
 
+        console.log('getOrderDetails data', 86, data)
+
         dispatch({
             type: ORDER_DETAILS_SUCCESS,
             payload: data
         })
+        console.log("ACTION order details sucs", data)
 
        
         

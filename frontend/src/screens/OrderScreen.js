@@ -1,7 +1,7 @@
 import React, {  useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {useParams, useNavigate, Link } from 'react-router-dom'
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import { Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 
 import { getOrderDetails } from '../actions/orderActions'
 import Loader from '../components/Loader'
@@ -9,22 +9,26 @@ import Message from '../components/Message'
 
 function OrderScreen() {
     const { id } = useParams()
-    console.log("order screen ID===>", id)
+    console.log("orderScreen ID===>", id)
+    
     const dispatch = useDispatch()
-
+   
     const navigate = useNavigate()
-    const orderDetails = useSelector(state => state.orderCreate)
-    console.log('order screen ORDER DETAILS==>>>', orderDetails)
+    const orderDetails = useSelector(state => state.orderDetails)
+    // const orderDetails = useSelector(state => state.orderCreate)
+    const state = useSelector(state => state)
+    console.log('state', state)
+    console.log('orderScreen ORDER DETAILS==>>>', orderDetails)
 
     const { order, error, loading } = orderDetails
-    console.log('order screen ORDER++++>>>', order)
-
+    console.log('orderScreen ORDER++++>>>', order)
+    
     if (!loading && !error) {
         order.itemsPrice = order.orderItems.reduce((acc, item) => acc + Number(item.price * item.qty), 0).toFixed(2)
     }
 
     useEffect(() => {
-        if (!id || order._id !== Number(id)) {
+        if (!order || order._id !== Number(id)) {
             dispatch(getOrderDetails(id))
         }
 
@@ -143,4 +147,5 @@ function OrderScreen() {
     )
 }
 
+    
 export default OrderScreen
