@@ -17,7 +17,7 @@ function PlaceOrderScreen() {
     const { order, error, success } = orderCreate
     const cart = useSelector(state => state.cart)
     const { shippingAddress } = cart
-    console.log('cart', cart)
+    console.log('orderCreate Place Order Screen', orderCreate)
 
     cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2)
     cart.shippingPrice = (cart.itemsPrice > 100 ? 0 : 10).toFixed(2)
@@ -31,8 +31,8 @@ function PlaceOrderScreen() {
 
     useEffect(() => {
         if (success) {
-            navigate('/order/${order._id}')
-            dispatch({ type: ORDER_CREATE_RESET})
+            navigate(`/order/${order._id}`)
+            // dispatch({ type: ORDER_CREATE_RESET})
         }
     
     }, [success, navigate])
