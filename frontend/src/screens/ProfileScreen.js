@@ -21,6 +21,9 @@ function ProfileScreen() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    const state = useSelector(state => state)
+    
+    console.log('WTF???????????????', state)
 
 
     console.log('location ', location)
@@ -37,13 +40,13 @@ function ProfileScreen() {
 
     const orderListMy = useSelector(state => state.orderListMy)
     const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
-    console.log("EBENA MATRENA", orderListMy)
+    console.log("Orders List ===>>>", orderListMy)
 
     useEffect(() => {
         if (!userInfo) {
             navigate('/login')
         } else {
-            if (!user || !user.name || success) {
+            if (!user || !user.name || success || userInfo._id !== user._id ) {
                 dispatch({type: USER_UPDATE_PROFILE_RESET})
                 dispatch(getUserDetails('profile'))
                 dispatch(listMyOrders())
@@ -154,7 +157,7 @@ function ProfileScreen() {
                             </tr>
                         </thead>
                         <tbody>
-                            {orders.map(order => (
+                        {orders && orders.map(order => (
                                 <tr key={order._id}>
                                     <td>{order._id}</td>
                                     <td>{order.createdAt.substring(0, 10)}</td>
