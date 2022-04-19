@@ -5,7 +5,7 @@ import { Table, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import { listUsers } from '../actions/userActions'
+import { listUsers, deleteUser } from '../actions/userActions'
 
 
 function UserListScreen() {
@@ -18,6 +18,9 @@ function UserListScreen() {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
+    const userDelete = useSelector(state => state.userDelete)
+    const { success: successDelete } = userDelete
+
     console.log('LIST USERS SCREAM userList', userList)
 
     useEffect(() => {
@@ -26,10 +29,12 @@ function UserListScreen() {
         } else {
             navigate('/login')
         }
-    }, [dispatch, navigate])
+    }, [dispatch, navigate, successDelete])
 
     const deleteHandler = (id) => {
-        console.log('DELETE', id)
+        if (window.confirm('Are you sure yo want to delete this user?')){
+            dispatch(deleteUser(id))
+        }
     }
 
     return (
