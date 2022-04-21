@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
-// import axios from 'axios'
+
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
@@ -23,7 +23,7 @@ function ProductEditScreen() {
     const [category, setCategory] = useState('')
     const [countInStock, setCountInStock] = useState(0)
     const [description, setDescription] = useState('')
-    const [uploading, setUploading] = useState('false')
+    const [uploading, setUploading] = useState(false)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
